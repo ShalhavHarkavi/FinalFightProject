@@ -1,0 +1,1039 @@
+fileFormatVersion: 2
+guid: 46baa0f2af3339c4cbee2341ed9509ed
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5177405633962611425
+    second: Cody_FinalFightOne_0
+  - first:
+      213: 6464339643735400925
+    second: Cody_Punch_01
+  - first:
+      213: -6158684102658380149
+    second: Cody_Punch_02
+  - first:
+      213: 6388425295393412447
+    second: Cody_Punch_03
+  - first:
+      213: 7085316224585347392
+    second: Cody_Crouch
+  - first:
+      213: 3540484215222448286
+    second: Cody_FinalFightOne_5
+  - first:
+      213: 8436626356381596505
+    second: Cody_FinalFightOne_6
+  - first:
+      213: 4635681558627042279
+    second: Cody_FinalFightOne_7
+  - first:
+      213: 173615189772313501
+    second: Cody_Walk_01
+  - first:
+      213: 2117727706076626641
+    second: Cody_Walk_02
+  - first:
+      213: 5629369880274954219
+    second: Cody_Walk_03
+  - first:
+      213: 1929698431129185681
+    second: Cody_Walk_04
+  - first:
+      213: 4937833943947335889
+    second: Cody_Walk_05
+  - first:
+      213: 8298328088254076999
+    second: Cody_Walk_06
+  - first:
+      213: -9154136108185846051
+    second: Cody_FinalFightOne_14
+  - first:
+      213: 2489650335015256340
+    second: Cody_FinalFightOne_15
+  - first:
+      213: 6345056429817024345
+    second: Cody_FinalFightOne_16
+  - first:
+      213: 6073287571157804716
+    second: Cody_FinalFightOne_17
+  - first:
+      213: 4140102901648423179
+    second: Cody_FinalFightOne_18
+  - first:
+      213: -1420514857729007690
+    second: Cody_FinalFightOne_19
+  - first:
+      213: 3346667948855614012
+    second: Cody_FinalFightOne_20
+  - first:
+      213: 4514104564876941051
+    second: Cody_FinalFightOne_21
+  - first:
+      213: 57571508411814994
+    second: Cody_FinalFightOne_22
+  - first:
+      213: -4016942086444996796
+    second: Cody_FinalFightOne_23
+  - first:
+      213: -1273333173031687894
+    second: Cody_FinalFightOne_24
+  - first:
+      213: 4909404391806816545
+    second: Cody_FinalFightOne_25
+  - first:
+      213: 875772776076206285
+    second: Cody_FinalFightOne_26
+  - first:
+      213: -3885521761411134125
+    second: Cody_FinalFightOne_27
+  - first:
+      213: -746566384824178
+    second: Cody_FinalFightOne_28
+  - first:
+      213: 6072855161924472164
+    second: Cody_FinalFightOne_29
+  - first:
+      213: 4008736980242591821
+    second: Cody_FinalFightOne_30
+  - first:
+      213: 1567601063656844169
+    second: Cody_FinalFightOne_31
+  - first:
+      213: -5646312074917936450
+    second: Cody_Pickup
+  - first:
+      213: 6940012860354983987
+    second: Cody_ForwardJump_01
+  - first:
+      213: -2913100128992030070
+    second: Cody_ForwardJump_02
+  - first:
+      213: -3023711316357349080
+    second: Cody_ForwardJump_03
+  - first:
+      213: 9192709026801930630
+    second: Cody_ForwardJump_04
+  - first:
+      213: -7855694977982327947
+    second: Cody_ForwardJump_05
+  - first:
+      213: -1387125735962634985
+    second: Cody_FinalFightOne_38
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 18
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 494
+        width: 58
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6ffad7308ff3c249971305c99d3457c
+      internalID: -5177405633962611425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_Punch_01
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 499
+        width: 37
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d6ac044ee479c749b8671a4276ae256
+      internalID: 6464339643735400925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_Punch_02
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 501
+        width: 45
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 259e7ea06caf9da45a891281b434474d
+      internalID: -6158684102658380149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_Punch_03
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 501
+        width: 62
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30dd4c4b00a879a428471b438078ee5d
+      internalID: 6388425295393412447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_Crouch
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 490
+        width: 37
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6200c9c281911bd468cde8a04cc2ee70
+      internalID: 7085316224585347392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_5
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 486
+        width: 30
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5650ad33ca507004b9eee3a765480634
+      internalID: 3540484215222448286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_6
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 496
+        width: 38
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecc5767130172fd47979ff6be8e0a269
+      internalID: 8436626356381596505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_7
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 476
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edabc625733eac0418f09e9d92aa9384
+      internalID: 4635681558627042279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_Walk_01
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 381
+        width: 37
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c59bcbe04c7e34b47a15f49d8237d792
+      internalID: 173615189772313501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_Walk_02
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 381
+        width: 26
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e651d00fe4bd58e428cb9a42968ab2ab
+      internalID: 2117727706076626641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_Walk_03
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 382
+        width: 45
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a52c2f9d819c80489860323c064f2bd
+      internalID: 5629369880274954219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_Walk_04
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 382
+        width: 36
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 043c17cf33d27cb4090940ef7488118f
+      internalID: 1929698431129185681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_Walk_05
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 380
+        width: 24
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4defea4ccce4b47408956e24bcddc8e1
+      internalID: 4937833943947335889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_Walk_06
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 383
+        width: 45
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb8a311052ad3ed41a533e9d1e01a61b
+      internalID: 8298328088254076999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_14
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 383
+        width: 38
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0117f303159848b4ea9e193281a88866
+      internalID: -9154136108185846051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_15
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 384
+        width: 46
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca5e5706a8c455648bc901c157f863d5
+      internalID: 2489650335015256340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_16
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 295
+        width: 49
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49f3c8132765bd540b217d21af9dae11
+      internalID: 6345056429817024345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_17
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 288
+        width: 38
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99cc3ef371589f3448be8330bc3e6c6f
+      internalID: 6073287571157804716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_18
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 311
+        width: 79
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 784d084bb2ebe3247938b99111d03819
+      internalID: 4140102901648423179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_19
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 305
+        width: 30
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29ec25c4ea12678499b930c4179071cf
+      internalID: -1420514857729007690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_20
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 304
+        width: 63
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b2ecb25da444f84bb574bc9a8d55e8d
+      internalID: 3346667948855614012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_21
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 307
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80d9d4c7ab695f04b9ae45b73a728cc9
+      internalID: 4514104564876941051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_22
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 202
+        width: 47
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26bd23274bc0c3b44a0b1263d2d5e29b
+      internalID: 57571508411814994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_23
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 203
+        width: 75
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5291e7aa20755314cb1129327ce456b6
+      internalID: -4016942086444996796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_24
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 204
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67cefed95909b7144b80ca50b8b7baa2
+      internalID: -1273333173031687894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_25
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 204
+        width: 58
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10ae4b42ca338cb4fa382f2fffbcf94c
+      internalID: 4909404391806816545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_26
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 203
+        width: 58
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9257a4096255a44a9a5d786bd455014
+      internalID: 875772776076206285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_27
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 200
+        width: 40
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1274ae1b6488a4c4b8db8e43a7fe11d6
+      internalID: -3885521761411134125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_28
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 99
+        width: 44
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f8ef5c317d744e43810b07c50302ec9
+      internalID: -746566384824178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_29
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 126
+        width: 63
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa927d049fb614540ab5993d78c752fc
+      internalID: 6072855161924472164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_30
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 123
+        width: 80
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0776e84ce29e87a449b86e89f4e93cd2
+      internalID: 4008736980242591821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_31
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 117
+        width: 67
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 199d2a04b8364fd408d47909342c2d36
+      internalID: 1567601063656844169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_Pickup
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 116
+        width: 37
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cb475f7e51f0a64fa14f7f4f4c28044
+      internalID: -5646312074917936450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_ForwardJump_01
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 9
+        width: 49
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f3568f671299544bb1158d171b2cc05
+      internalID: 6940012860354983987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_ForwardJump_02
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 31
+        width: 52
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e329ad002b53be64484f8e37b2f7eecd
+      internalID: -2913100128992030070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_ForwardJump_03
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 39
+        width: 48
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16aa4db84976b0b4fb6770f55c4aa20c
+      internalID: -3023711316357349080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_ForwardJump_04
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 42
+        width: 52
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df3a7ee39396a32409c46a34f2405587
+      internalID: 9192709026801930630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_ForwardJump_05
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 34
+        width: 48
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 990b855273eb90e449cd56a537ca7f9f
+      internalID: -7855694977982327947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cody_FinalFightOne_38
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 0
+        width: 105
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c01d06c86a5c854a9bcef7ca1ff61d5
+      internalID: -1387125735962634985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
