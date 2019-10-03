@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     //Set up different menus for accessibility!
 
     float xMin, xMax, yMin, yMax, punchTimer;
-    bool canMove, doCountPunchTimer;
+    bool canMove, doCountPunchTimer, isJumping, isNearItem;
     int movingState, punchCounter;
 
     Animator animator;
@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
         movingState = 1;
         punchCounter = 0;
         punchTimer = punchTimerMax;
+        isJumping = false;
+        isNearItem = false;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         gameCamera = Camera.main;
@@ -70,10 +72,20 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Punch"))
         {
-            //Pickup: if (item in near proximity) ==> pickup function
-            //else:
-            InitiatePunchSystem();
+            if (isNearItem)
+                PickUpItem();
+            else
+                animator.SetTrigger("isPunching"); //TEMP: InitiatePunchSystem();
         }
+    }
+    private void OnTriggerEnter2D(Collider2D enemyCollider)
+    {
+        Debug.Log("Hit");
+        InitiatePunchSystem();
+    }
+    private void PickUpItem()
+    {
+        throw new NotImplementedException();
     }
     private void InitiatePunchSystem() //Make sure second punch and onwards are only triggered on hit. Else, reg punch.
     {
@@ -87,20 +99,20 @@ public class Player : MonoBehaviour
         }
         if (punchCounter == 0 || punchCounter == 1)
         {
-            animator.SetTrigger("isPunching");
             punchCounter++;
+            animator.SetTrigger("isPunching");
             punchTimer = punchTimerMax;
         }
         else if (punchCounter == 2)
         {
-            animator.SetTrigger("isHardPunching");
             punchCounter++;
+            animator.SetTrigger("isHardPunching");
             punchTimer = punchTimerMax;
         }
         else if (punchCounter == 3)
         {
-            animator.SetTrigger("isUppercutting");
             punchCounter++;
+            animator.SetTrigger("isUppercutting");
             punchTimer = punchTimerMax;
         }
         
