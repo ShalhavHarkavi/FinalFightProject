@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [Range(0,1)] [SerializeField] float yWorldPointMax = 1f;
     [SerializeField] float xPadding = 0f;
     [SerializeField] float yPadding = 0f;
-    [SerializeField] float punchTimerMax = 1.5f;
+    [SerializeField] float punchTimerMax = 0.1f;
     //Set up different menus for accessibility!
 
     float xMin, xMax, yMin, yMax, punchTimer;
@@ -43,7 +43,10 @@ public class Player : MonoBehaviour
         if (movingState == 0)
             canMove = false;
         if (doCountPunchTimer)
+        {
             punchTimer -= Time.deltaTime;
+            Debug.Log(punchTimer);
+        }
         if (!doCountPunchTimer && canMove)
             punchCounter = 0;
     }
@@ -80,14 +83,13 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D enemyCollider)
     {
-        Debug.Log("Hit");
         InitiatePunchSystem();
     }
     private void PickUpItem()
     {
         throw new NotImplementedException();
     }
-    private void InitiatePunchSystem() //Make sure second punch and onwards are only triggered on hit. Else, reg punch.
+    private void InitiatePunchSystem() //Fix so punches don't go off automatically.
     {
         doCountPunchTimer = true;
         if (punchCounter > 3 || punchTimer <= 0f)
@@ -115,7 +117,6 @@ public class Player : MonoBehaviour
             animator.SetTrigger("isUppercutting");
             punchTimer = punchTimerMax;
         }
-        
     }
     private void AttackAndWalkState(int state) { movingState = state; } //rename
 }

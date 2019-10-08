@@ -383,7 +383,7 @@ PrefabInstance:
     - target: {fileID: 1856418983171993972, guid: 751e48296c908c54c83ff951b8445b1e,
         type: 3}
       propertyPath: punchTimerMax
-      value: 0.5
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 751e48296c908c54c83ff951b8445b1e, type: 3}
