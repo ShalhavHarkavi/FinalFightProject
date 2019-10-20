@@ -132,6 +132,9 @@ GameObject:
   - component: {fileID: 427501618}
   - component: {fileID: 427501617}
   - component: {fileID: 427501616}
+  - component: {fileID: 427501619}
+  - component: {fileID: 427501620}
+  - component: {fileID: 427501621}
   m_Layer: 10
   m_Name: Dummy
   m_TagString: Untagged
@@ -230,6 +233,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &427501619
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427501615}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &427501620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427501615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7581fc98ccfbf54ba424cf78c831f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &427501621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427501615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cb8a1bc079c8345885907034d7fc78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationTriggerNames: []
+  isHitstunned: 1
+  maxattackInitDelay: 0.5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,6 +364,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1414898979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1856418983171993977, guid: 751e48296c908c54c83ff951b8445b1e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1856418983402551293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1414898980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414898979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cb8a1bc079c8345885907034d7fc78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationTriggerNames:
+  - isPunching
+  - isHardPunching
+  - isUppercutting
+  isHitstunned: 0
+  maxattackInitDelay: 0.5
 --- !u!1001 &1856418983402551293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -320,6 +395,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1856418983171993977, guid: 751e48296c908c54c83ff951b8445b1e,
+        type: 3}
+      propertyPath: m_Name
+      value: Cody
+      objectReference: {fileID: 0}
+    - target: {fileID: 1856418983171993977, guid: 751e48296c908c54c83ff951b8445b1e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1856418983171993979, guid: 751e48296c908c54c83ff951b8445b1e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -375,15 +460,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1856418983171993977, guid: 751e48296c908c54c83ff951b8445b1e,
-        type: 3}
-      propertyPath: m_Name
-      value: Cody
-      objectReference: {fileID: 0}
     - target: {fileID: 1856418983171993972, guid: 751e48296c908c54c83ff951b8445b1e,
         type: 3}
       propertyPath: punchTimerMax
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1856418983171993972, guid: 751e48296c908c54c83ff951b8445b1e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64913493, guid: 751e48296c908c54c83ff951b8445b1e, type: 3}
+      propertyPath: m_TagString
+      value: Hitbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 246162398, guid: 751e48296c908c54c83ff951b8445b1e, type: 3}
+      propertyPath: m_TagString
+      value: Hurtbox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 751e48296c908c54c83ff951b8445b1e, type: 3}

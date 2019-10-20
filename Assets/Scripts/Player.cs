@@ -11,15 +11,20 @@ public class Player : MonoBehaviour
     [SerializeField] float xPadding = 0f;
     [SerializeField] float yPadding = 0f;
     [SerializeField] float punchTimerMax = 0.1f;
-    //Set up different menus for accessibility!
+    [SerializeField] List<string> animationTriggerNames;
+    //Set up headers for accessibility!
 
     float xMin, xMax, yMin, yMax, punchTimer;
     bool canMove, doCountPunchTimer, isJumping, isNearItem;
     int movingState, punchCounter;
 
+    private float timeBtwAttack;
+    [SerializeField] public float startTimeBtwAttack = 0.5f;
+
     Animator animator;
     SpriteRenderer spriteRenderer;
     Camera gameCamera;
+    Combat combat;
 
     void Start()
     {
@@ -31,24 +36,18 @@ public class Player : MonoBehaviour
         isNearItem = false;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        combat = GetComponent<Combat>();
         gameCamera = Camera.main;
         SetUpMoveBoundaries();
     }
     void Update()
     {
-        Move();
         Attack();
+        Move();
         if (movingState == 1)
             canMove = true;
         if (movingState == 0)
             canMove = false;
-        if (doCountPunchTimer)
-        {
-            punchTimer -= Time.deltaTime;
-            Debug.Log(punchTimer);
-        }
-        if (!doCountPunchTimer && canMove)
-            punchCounter = 0;
     }
     private void SetUpMoveBoundaries()
     {
@@ -78,45 +77,16 @@ public class Player : MonoBehaviour
             if (isNearItem)
                 PickUpItem();
             else
-                animator.SetTrigger("isPunching"); //TEMP: InitiatePunchSystem();
+                animator.SetTrigger("isPunching");
         }
     }
-    private void OnTriggerEnter2D(Collider2D enemyCollider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        InitiatePunchSystem();
+        combat.InitiatePunchSystem(collider);
     }
     private void PickUpItem()
     {
         throw new NotImplementedException();
     }
-    private void InitiatePunchSystem() //Fix so punches don't go off automatically.
-    {
-        doCountPunchTimer = true;
-        if (punchCounter > 3 || punchTimer <= 0f)
-        {
-            doCountPunchTimer = false;
-            punchTimer = punchTimerMax;
-            punchCounter = 0;
-            return; //before return - add a bit of stun. unless it is already part of the uppercut animation
-        }
-        if (punchCounter == 0 || punchCounter == 1)
-        {
-            punchCounter++;
-            animator.SetTrigger("isPunching");
-            punchTimer = punchTimerMax;
-        }
-        else if (punchCounter == 2)
-        {
-            punchCounter++;
-            animator.SetTrigger("isHardPunching");
-            punchTimer = punchTimerMax;
-        }
-        else if (punchCounter == 3)
-        {
-            punchCounter++;
-            animator.SetTrigger("isUppercutting");
-            punchTimer = punchTimerMax;
-        }
-    }
-    private void AttackAndWalkState(int state) { movingState = state; } //rename
+    private void AttackAndWalkState(int state) { movingState = state; }
 }
