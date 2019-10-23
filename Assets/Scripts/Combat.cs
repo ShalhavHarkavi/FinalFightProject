@@ -8,10 +8,26 @@ public class Combat : MonoBehaviour
     [SerializeField] bool isHitstunned = false;
     [SerializeField] float attackInitDelay = .5f;
     bool canInitiate = true;
+    [SerializeField] float hitstunTimerMax = 20; //in frames, not seconds
+    float hitstunTimer;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        hitstunTimer = hitstunTimerMax;
+    }
+    void Update()
+    {
+        /* if (isHitstunned)
+        {
+            hitstunTimer -= 1;
+            Debug.Log(hitstunTimer);
+        }
+        if (hitstunTimer <= 0)
+        {
+            isHitstunned = false;
+            hitstunTimer = hitstunTimerMax;
+        }*/
     }
     public void InitiatePunchSystem(Collider2D enemyCollider) //Fix so punches don't go off automatically.
     {
@@ -23,7 +39,7 @@ public class Combat : MonoBehaviour
                 enemyCollider.gameObject.GetComponent<Combat>().isHitstunned = true;
                 return; //before return - add a bit of stun. unless it is already part of the uppercut animation
             }
-            else if (isHitStunned(enemyCollider.gameObject))
+            else if (isHitStunned(enemyCollider.gameObject) && Input.GetKeyDown("Punch"))
             {
                 animator.SetTrigger("isPunching");
                 Invoke("ResetAttack", attackInitDelay);
