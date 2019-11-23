@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     bool canMove, doCountPunchTimer, isJumping, isNearItem;
     int movingState, punchCounter;
 
+    int attackIndex;
+
     private float timeBtwAttack;
     [SerializeField] public float startTimeBtwAttack = 0.5f;
 
@@ -77,12 +79,25 @@ public class Player : MonoBehaviour
             if (isNearItem)
                 PickUpItem();
             else
+            {
                 animator.SetTrigger("isPunching");
+                attackIndex = 0;
+            }
+        }
+        else if (Input.GetButtonDown("Heavy Punch"))
+        {
+            animator.SetTrigger("isHardPunching");
+            attackIndex = 1;
+        }
+        else if (Input.GetButtonDown("Uppercut"))
+        {
+            animator.SetTrigger("isUppercutting");
+            attackIndex = 2;
         }
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        animator.SetTrigger("didhit");
+        animator.SetTrigger("didHit");
         combat.InitiatePunchSystem(collider);
     }
     private void PickUpItem()

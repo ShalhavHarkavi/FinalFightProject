@@ -278,9 +278,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3cb8a1bc079c8345885907034d7fc78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHitstunned: 1
+  isHitstunned: 0
   attackInitDelay: 0
-  hitstunTimerMax: 20
+  hitstunTimerMax: 300
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

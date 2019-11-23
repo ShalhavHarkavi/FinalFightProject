@@ -18,10 +18,14 @@ public class Enemy : MonoBehaviour
 
     EnemyState currentState;
     GameObject playerRef;
+    Animator animator;
+    Combat combat;
 
     void Start()
     {
         currentState = EnemyState.initializing;
+        animator = GetComponent<Animator>();
+        combat = GetComponent<Combat>();
     }
     void Update()
     {
