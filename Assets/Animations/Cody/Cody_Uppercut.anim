@@ -438,7 +438,7 @@ AnimationClip:
     - time: 0.4
       value: {fileID: 4464361994249228441, guid: 36ac9688b209bcd4eb05dd12db4ffda8,
         type: 3}
-    - time: 0.56666666
+    - time: 0.6666667
       value: {fileID: 4464361994249228441, guid: 36ac9688b209bcd4eb05dd12db4ffda8,
         type: 3}
     attribute: m_Sprite
@@ -507,7 +507,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5833333
+    m_StopTime: 0.68333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -935,7 +935,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.56666666
+  - time: 0.6666667
     functionName: AttackAndWalkState
     data: 
     objectReferenceParameter: {fileID: 0}
