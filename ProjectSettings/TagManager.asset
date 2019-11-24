@@ -9,6 +9,7 @@ TagManager:
   - notInHitState
   - inHitState
   - Enemy
+  - Consumable
   layers:
   - Default
   - TransparentFX

@@ -35,8 +35,8 @@ public class Combat : MonoBehaviour
             Invoke("ResetHitstun", hitstunTimer);
         }
 
-        if (this.gameObject.CompareTag("Enemy"))
-            Debug.Log(hitstunTimer);
+        // if (this.gameObject.CompareTag("Enemy"))
+        //     Debug.Log(hitstunTimer);
     }
     public void InitiatePunchSystem(Collider2D enemyCollider) //Fix so punches don't go off automatically.
     {
