@@ -561,12 +561,12 @@ PrefabInstance:
     - target: {fileID: 1856418983171993979, guid: 751e48296c908c54c83ff951b8445b1e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 1856418983171993979, guid: 751e48296c908c54c83ff951b8445b1e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.83
       objectReference: {fileID: 0}
     - target: {fileID: 1856418983171993979, guid: 751e48296c908c54c83ff951b8445b1e,
         type: 3}
@@ -623,6 +623,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1856418983171993972, guid: 751e48296c908c54c83ff951b8445b1e,
+        type: 3}
+      propertyPath: jumpSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1856418983171993972, guid: 751e48296c908c54c83ff951b8445b1e,
+        type: 3}
+      propertyPath: gravity
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 64913493, guid: 751e48296c908c54c83ff951b8445b1e, type: 3}
       propertyPath: m_TagString
       value: Hitbox
@@ -630,6 +640,11 @@ PrefabInstance:
     - target: {fileID: 246162398, guid: 751e48296c908c54c83ff951b8445b1e, type: 3}
       propertyPath: m_TagString
       value: Hurtbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1856418983171993978, guid: 751e48296c908c54c83ff951b8445b1e,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 751e48296c908c54c83ff951b8445b1e, type: 3}

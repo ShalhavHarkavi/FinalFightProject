@@ -16,13 +16,14 @@ public class Player : MonoBehaviour
     [SerializeField] float punchTimerMax = 0.1f; //maybe remove?
     [SerializeField] List<string> animationTriggerNames; //maybe remove?
     [SerializeField] float jumpSpeed = 10f; //maybe add range?
-    //Set up headers for accessibility!
+    [SerializeField] float gravity = 1f; //Need to tweak
+    //Set up headers (and descriptions) for accessibility!
 
-    float xMin, xMax, yMin, yMax, punchTimer;
+    float xMin, xMax, yMin, yMax, punchTimer, jumpTimer;
     bool canMove, canJump, doCountPunchTimer, isJumping, isNearItem;
-    int playerHealth, playerPoints, movingState, punchCounter;
+    int playerHealth, playerPoints, movingState, jumpingState, punchCounter;
     Collider2D consumableCollider = null;
-    private float timeBtwAttack;
+    private float timeBtwAttack; //maybe remove? check usablity
     [SerializeField] public float startTimeBtwAttack = 0.5f;
 
     Animator animator;
@@ -38,7 +39,9 @@ public class Player : MonoBehaviour
         canMove = true;
         canJump = true;
         movingState = 1;
+        jumpingState = 1;
         punchCounter = 0;
+        jumpTimer = 0;
         punchTimer = punchTimerMax;
         isJumping = false;
         isNearItem = false;
@@ -53,11 +56,21 @@ public class Player : MonoBehaviour
     {
         Attack();
         Move();
-        Jump();
+        InitiateJump();
+        if (isJumping)
+            jumpTimer += Time.deltaTime;
+        if (!isJumping)
+            jumpTimer = 0; //Maybe reset through different func?
+        Jump(jumpTimer);
         if (movingState == 1)
             canMove = true;
         if (movingState == 0)
             canMove = false;
+        if (jumpingState == 1)
+            canJump = true;
+        if (jumpingState == 0)
+            canJump = false; //Maybe wrap state settings in a function?
+        //Find better way to write this, maybe change isJumping to trigger and add bool isJumping? then if input.getbuttondown("punch") && isJumping, trigger specific air kick?
         PointsToLives();
         LivesToHealth();
         if (playerHealth > playerHealthMax)
@@ -77,21 +90,32 @@ public class Player : MonoBehaviour
         if (canMove)
         {
             float deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * xAxisMoveSpeed;
-            var newXpos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
-            float deltaY = Input.GetAxis("Vertical") * Time.deltaTime * yAxisMoveSpeed;
-            var newYpos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
+            float newXpos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
+            float deltaY = Input.GetAxis("Vertical") * Time.deltaTime * yAxisMoveSpeed; //maybe restrict y movemvent to !isJumping?
+            float newYpos = 0;
+            if (!isJumping)
+                newYpos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
             transform.position = new Vector2(newXpos, newYpos);
             if (deltaX != 0)
                 transform.localScale = new Vector2(Mathf.Sign(deltaX), 1f);
             animator.SetBool("isWalking", (deltaX != 0 || deltaY != 0));
         }
     }
-    private void Jump()
+    private void InitiateJump()
     {
-        if (Input.GetButtonDown("Jump")) //&& canJump
+        if (Input.GetButtonDown("Jump") && canJump)
         {
-            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, jumpSpeed);
-            //playerRigidbody.AddForce(Vector2.up, ForceMode2D.Force);
+            isJumping = true;
+            animator.SetTrigger("isJumping");
+        }
+    }
+    private void Jump(float jumpTimer)
+    {
+        if (isJumping)
+        {
+            //float xSpeed = xAxisMoveSpeed; //variable => 0 if no x movement
+            float xSpeed = 0;
+            transform.position += new Vector3(xSpeed, jumpSpeed * jumpTimer - 0.5f * gravity * Mathf.Pow(jumpTimer, 2));
         }
     }
     private void Attack()
@@ -166,4 +190,5 @@ public class Player : MonoBehaviour
         }
     }
     private void AttackAndWalkState(int state) { movingState = state; }
+    private void JumpState(int state) { jumpingState = state; }
 }
