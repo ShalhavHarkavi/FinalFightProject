@@ -10,6 +10,8 @@ TagManager:
   - inHitState
   - Enemy
   - Consumable
+  - attackCollider
+  - detectCollider
   layers:
   - Default
   - TransparentFX

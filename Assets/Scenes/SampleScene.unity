@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 427501619}
   - component: {fileID: 427501620}
   - component: {fileID: 427501621}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Dummy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -266,6 +266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7581fc98ccfbf54ba424cf78c831f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDistance: 5
+  giveUpChaseDistance: 100
 --- !u!114 &427501621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +283,63 @@ MonoBehaviour:
   isHitstunned: 0
   attackInitDelay: 0
   hitstunTimerMax: 300
+--- !u!1 &517969196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 517969197}
+  - component: {fileID: 517969198}
+  m_Layer: 8
+  m_Name: AttackCollider
+  m_TagString: attackCollider
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &517969197
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517969196}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1414898985}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &517969198
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517969196}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.11163831, y: -0.23922539}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4, y: 7}
+  m_EdgeRadius: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,27 +423,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1414898979 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1856418983171993977, guid: 751e48296c908c54c83ff951b8445b1e,
+--- !u!4 &1414898985 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1856418983171993979, guid: 751e48296c908c54c83ff951b8445b1e,
     type: 3}
   m_PrefabInstance: {fileID: 1856418983402551293}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1414898980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414898979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3cb8a1bc079c8345885907034d7fc78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isHitstunned: 0
-  attackInitDelay: 60
-  hitstunTimerMax: 0
 --- !u!1 &1502250665
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,20 +597,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cody
       objectReference: {fileID: 0}
-    - target: {fileID: 1856418983171993977, guid: 751e48296c908c54c83ff951b8445b1e,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 1856418983171993979, guid: 751e48296c908c54c83ff951b8445b1e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.18
+      value: -6.9
       objectReference: {fileID: 0}
     - target: {fileID: 1856418983171993979, guid: 751e48296c908c54c83ff951b8445b1e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.83
+      value: -1.27
       objectReference: {fileID: 0}
     - target: {fileID: 1856418983171993979, guid: 751e48296c908c54c83ff951b8445b1e,
         type: 3}
@@ -612,39 +651,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1856418983171993972, guid: 751e48296c908c54c83ff951b8445b1e,
-        type: 3}
-      propertyPath: punchTimerMax
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1856418983171993972, guid: 751e48296c908c54c83ff951b8445b1e,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1856418983171993972, guid: 751e48296c908c54c83ff951b8445b1e,
-        type: 3}
-      propertyPath: jumpSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1856418983171993972, guid: 751e48296c908c54c83ff951b8445b1e,
-        type: 3}
-      propertyPath: gravity
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 64913493, guid: 751e48296c908c54c83ff951b8445b1e, type: 3}
-      propertyPath: m_TagString
-      value: Hitbox
-      objectReference: {fileID: 0}
-    - target: {fileID: 246162398, guid: 751e48296c908c54c83ff951b8445b1e, type: 3}
-      propertyPath: m_TagString
-      value: Hurtbox
-      objectReference: {fileID: 0}
-    - target: {fileID: 1856418983171993978, guid: 751e48296c908c54c83ff951b8445b1e,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 751e48296c908c54c83ff951b8445b1e, type: 3}
