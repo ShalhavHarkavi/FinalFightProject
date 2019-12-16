@@ -12,6 +12,7 @@ TagManager:
   - Consumable
   - attackCollider
   - detectCollider
+  - consumableBody
   layers:
   - Default
   - TransparentFX

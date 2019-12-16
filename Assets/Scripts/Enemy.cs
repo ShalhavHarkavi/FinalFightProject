@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
         ChasingPlayer();
         break;
       case EnemyState.attacking:
-        //
+        Attacking();
         break;
       case EnemyState.runningAway:
         //
@@ -63,13 +63,20 @@ public class Enemy : MonoBehaviour
 
 private void OnTriggerEnter2D(Collider2D other)
 {
-  if (other.gameObject.transform.parent.CompareTag("Player") && other.gameObject.CompareTag("detectCollider"))
-    detectedPlayer = true;
-  if (other.gameObject.transform.parent.CompareTag("Player") && other.gameObject.CompareTag("attackCollider"))
-    inAttackRange = true;
+  if (!other.gameObject.transform.parent)
+    return;
+  if (other.gameObject.transform.parent.CompareTag("Player"))
+  {
+    if (other.gameObject.CompareTag("detectCollider"))
+      detectedPlayer = true;
+    if (other.gameObject.CompareTag("attackCollider"))
+      inAttackRange = true;
+  }
 }
 void OnTriggerExit2D(Collider2D other)
 {
+  if (!other.gameObject.transform.parent)
+    return;
   if ((other.transform.parent.gameObject.CompareTag("Player") && other.gameObject.CompareTag("attackCollider")))
     inAttackRange = false;
 }
@@ -90,7 +97,6 @@ void OnTriggerExit2D(Collider2D other)
   {
     if (!inAttackRange)
       currentState = EnemyState.chasingPlayer;
-    Debug.Log("Is attacking.");
   }
   private void RunningAway()
   { }
