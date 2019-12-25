@@ -71,6 +71,8 @@ private void OnTriggerEnter2D(Collider2D other)
       detectedPlayer = true;
     if (other.gameObject.CompareTag("attackCollider"))
       inAttackRange = true;
+    if (other.gameObject.CompareTag("Shield"))
+      Debug.Log("Enemy hit Player's shield!"); //Handle shielding here
   }
 }
 void OnTriggerExit2D(Collider2D other)

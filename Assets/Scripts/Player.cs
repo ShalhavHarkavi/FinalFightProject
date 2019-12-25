@@ -20,8 +20,9 @@ public class Player : MonoBehaviour
   //Set up headers (and descriptions) for accessibility!
 
   float xMin, xMax, yMin, yMax, punchTimer, jumpTimer;
-  bool canMove, canJump, doCountPunchTimer, isJumping, isNearItem;
+  bool canMove, canJump, doCountPunchTimer, isJumping, isNearItem, isShielding;
   int playerHealth, playerPoints, movingState, jumpingState, punchCounter;
+  GameObject shield = null;
   Collider2D consumableCollider = null;
   private float timeBtwAttack; //maybe remove? check usablity
   [SerializeField] public float startTimeBtwAttack = 0.5f;
@@ -45,18 +46,29 @@ public class Player : MonoBehaviour
     punchTimer = punchTimerMax;
     isJumping = false;
     isNearItem = false;
+    isShielding = false;
     animator = GetComponent<Animator>();
     spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     playerRigidbody = GetComponent<Rigidbody2D>();
     combat = GetComponent<Combat>();
     gameCamera = Camera.main;
     SetUpMoveBoundaries();
+    shield = transform.Find("Cody Shield").gameObject; //If need to change to previous version: GameObject.Find("Cody Shield");
+    if (!shield)
+      Debug.LogError("NO SHIELD OBJECT CONNECTED TO PLAYER!");
+    else
+      shield.SetActive(false);
   }
   void Update()
   {
     Attack();
     Move();
     InitiateJump();
+    isShielding = Input.GetButton("Shield");
+    if (isShielding)
+      shield.SetActive(true);
+    else
+      shield.SetActive(false);
     if (isJumping)
       jumpTimer += Time.deltaTime;
     if (!isJumping)
@@ -87,7 +99,7 @@ public class Player : MonoBehaviour
   }
   private void Move()
   {
-    if (canMove)
+    if (canMove && !isShielding)
     {
       float deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * xAxisMoveSpeed;
       float newXpos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
@@ -109,11 +121,6 @@ public class Player : MonoBehaviour
       animator.SetTrigger("isJumping");
     }
   }
-  // private void DisableBackwardsMovement()
-  // {
-  //   if (isJumping)
-
-  // }
   private void Jump(float jumpTimer)
   {
     if (isJumping)
