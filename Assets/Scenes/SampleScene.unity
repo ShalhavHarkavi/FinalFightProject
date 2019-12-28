@@ -268,6 +268,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 5
   giveUpChaseDistance: 10
+  enemyHealthMax: 1000
+  healthRunAwayBar: 100
 --- !u!114 &427501621
 MonoBehaviour:
   m_ObjectHideFlags: 0

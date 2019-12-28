@@ -24,6 +24,9 @@ public class Enemy : MonoBehaviour
   [SerializeField] float attackDistance = 2f; //Temp value, maybe change from distance to another collider with different tag
   [SerializeField] float giveUpChaseDistance = 10f; //Temp value
 
+  [SerializeField] int enemyHealthMax = 1000, healthRunAwayBar = 100;
+  int enemyHealth;
+
   void Start()
   {
     detectedPlayer = false;
@@ -31,6 +34,8 @@ public class Enemy : MonoBehaviour
     currentState = EnemyState.initializing;
     animator = GetComponent<Animator>();
     combat = GetComponent<Combat>();
+
+    enemyHealth = enemyHealthMax;
   }
   void Update()
   {
@@ -58,6 +63,13 @@ public class Enemy : MonoBehaviour
       case EnemyState.dead:
         //
         break;
+    }
+    if (enemyHealth <= healthRunAwayBar)
+    {
+      if (enemyHealth > 0)
+        currentState = EnemyState.runningAway;
+      else
+        currentState = EnemyState.dead;
     }
   }
 
@@ -89,11 +101,14 @@ void OnTriggerExit2D(Collider2D other)
   }
   private void ChasingPlayer()
   {
-    //Animate Walking
+    // animator.SetBool("isWalking", true);
     float distanceFromPlayer = Vector2.Distance(playerRef.transform.position, this.transform.position);
     transform.position = Vector2.MoveTowards(transform.position, playerRef.transform.position, 5f * Time.deltaTime); //maybe change 5f to something else
     if (inAttackRange)
+    {
+      // animator.SetBool("isWalking", false);
       currentState = EnemyState.attacking;
+    }
   }
   private void Attacking()
   {
@@ -103,7 +118,9 @@ void OnTriggerExit2D(Collider2D other)
   private void RunningAway()
   { }
   private void Blocking()
-  { }
+  {
+
+  }
   private void Dead()
   { }
 }
