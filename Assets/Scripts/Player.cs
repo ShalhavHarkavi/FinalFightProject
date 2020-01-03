@@ -146,7 +146,7 @@ public class Player : MonoBehaviour
   }
   private void OnTriggerEnter2D(Collider2D collider)
   {
-    if (collider.gameObject.CompareTag("Consumable"))
+    if (collider.gameObject.CompareTag("Consumable") && collider.gameObject.layer == LayerMask.NameToLayer("Consumables"))
     {
       isNearItem = true;
       consumableCollider = collider;

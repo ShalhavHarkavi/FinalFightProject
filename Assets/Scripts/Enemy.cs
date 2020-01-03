@@ -37,37 +37,41 @@ public class Enemy : MonoBehaviour
   }
   void Update()
   {
-    switch (currentState)
+    if (!combat.GetIsHitsunned())
     {
-      case EnemyState.initializing:
-        playerRef = GameObject.FindGameObjectWithTag("Player");
-        currentState = EnemyState.searchingPlayer;
-        break;
-      case EnemyState.searchingPlayer:
-        SearchingPlayer();
-        break;
-      case EnemyState.chasingPlayer:
-        ChasingPlayer();
-        break;
-      case EnemyState.attacking:
-        Attacking();
-        break;
-      case EnemyState.runningAway:
-        RunningAway();
-        break;
-      case EnemyState.blocking:
-        //
-        break;
-      case EnemyState.dead:
-        //
-        break;
-    }
-    if (enemyHealth <= healthRunAwayBar)
-    {
-      if (enemyHealth > 0)
-        currentState = EnemyState.runningAway;
-      else
-        currentState = EnemyState.dead;
+      switch (currentState)
+      {
+        case EnemyState.initializing:
+          playerRef = GameObject.FindGameObjectWithTag("Player");
+          currentState = EnemyState.searchingPlayer;
+          break;
+        case EnemyState.searchingPlayer:
+          SearchingPlayer();
+          break;
+        case EnemyState.chasingPlayer:
+          ChasingPlayer();
+          break;
+        case EnemyState.attacking:
+          Attacking();
+          break;
+        case EnemyState.runningAway:
+          RunningAway();
+          break;
+        case EnemyState.blocking:
+          //
+          break;
+        case EnemyState.dead:
+          //
+          break;
+      }
+      if (enemyHealth <= healthRunAwayBar)
+      {
+        if (enemyHealth > 0)
+          currentState = EnemyState.runningAway;
+        else
+          currentState = EnemyState.dead;
+      }
+      this.transform.localScale = new Vector2(((playerRef.transform.position.x > this.transform.position.x) ? 1 : -1), 1);
     }
   }
 
