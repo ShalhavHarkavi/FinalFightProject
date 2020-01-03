@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
       isNearItem = true;
       consumableCollider = collider;
     }
-    else
+    else if (collider.gameObject.layer == LayerMask.NameToLayer("Hitbox"))
     {
       animator.SetTrigger("didHit");
       combat.InitiatePunchSystem(collider);

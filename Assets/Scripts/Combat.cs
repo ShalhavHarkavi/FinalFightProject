@@ -43,12 +43,12 @@ public class Combat : MonoBehaviour
     if (canInitiate)
     {
       canInitiate = false;
-      if (!isHitStunned(enemyCollider.gameObject))
+      if (!isHitStunned(enemyCollider.transform.parent.gameObject))
       {
-        enemyCollider.gameObject.GetComponent<Combat>().isHitstunned = true;
+        enemyCollider.transform.parent.gameObject.GetComponent<Combat>().isHitstunned = true;
         return; //before return - add a bit of stun. unless it is already part of the uppercut animation
       }
-      else if (isHitStunned(enemyCollider.gameObject) && (Input.GetButtonDown("Punch") || Input.GetButtonDown("Heavy Punch") || Input.GetButtonDown("Uppercut")))
+      else if (isHitStunned(enemyCollider.transform.parent.gameObject) && (Input.GetButtonDown("Punch") || Input.GetButtonDown("Heavy Punch") || Input.GetButtonDown("Uppercut")))
       {
         if (Input.GetButtonDown("Punch")) animator.SetTrigger("isPunching");
         else if (Input.GetButtonDown("Heavy Punch")) animator.SetTrigger("isHardPunching");

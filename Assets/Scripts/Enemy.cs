@@ -23,7 +23,6 @@ public class Enemy : MonoBehaviour
   bool detectedPlayer, inAttackRange;
   [SerializeField] float attackDistance = 2f; //Temp value, maybe change from distance to another collider with different tag
   [SerializeField] float giveUpChaseDistance = 10f; //Temp value
-
   [SerializeField] int enemyHealthMax = 1000, healthRunAwayBar = 100;
   int enemyHealth;
 
@@ -34,7 +33,6 @@ public class Enemy : MonoBehaviour
     currentState = EnemyState.initializing;
     animator = GetComponent<Animator>();
     combat = GetComponent<Combat>();
-
     enemyHealth = enemyHealthMax;
   }
   void Update()
@@ -55,7 +53,7 @@ public class Enemy : MonoBehaviour
         Attacking();
         break;
       case EnemyState.runningAway:
-        //
+        RunningAway();
         break;
       case EnemyState.blocking:
         //
@@ -116,11 +114,29 @@ void OnTriggerExit2D(Collider2D other)
       currentState = EnemyState.chasingPlayer;
   }
   private void RunningAway()
-  { }
+  {
+    transform.position = Vector2.MoveTowards(transform.position, playerRef.transform.position, -5f * Time.deltaTime);
+  }
   private void Blocking()
   {
 
   }
+  private void SearchingConsumable()
+  {
+    GameObject[] consumables = GameObject.FindGameObjectsWithTag("Consumable");
+    if (consumables == null)
+    {
+      currentState = EnemyState.runningAway; //decide if blocking or running
+      return;
+    }
+    List<Vector2> consumableLocations = new List<Vector2>();
+    foreach (GameObject consumable in consumables)
+      consumableLocations.Add(consumable.transform.position);
+    
+  }
   private void Dead()
-  { }
+  {
+    //death animation
+    Destroy(this);
+  }
 }
