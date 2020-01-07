@@ -18,6 +18,15 @@ public class Combat : MonoBehaviour
 
   //add property descriptions for inspector
 
+  public enum AttackType
+  {
+    none,
+    light,
+    medium,
+    heavy,
+    air
+  }
+
   void Start()
   {
     animator = GetComponent<Animator>();
@@ -27,15 +36,6 @@ public class Combat : MonoBehaviour
   }
   void Update()
   {
-    // if (isHitstunned)
-    // {
-    //   hitstunTimer -= 1;
-    // }
-    // if (hitstunTimer <= 0)
-    // {
-    //   isHitstunned = false;
-    //   hitstunTimer = hitstunTimerMax;
-    // }
     if (isHitstunned && canInvokeHitstunReset)
     {
       //add set stun animation
@@ -58,15 +58,11 @@ public class Combat : MonoBehaviour
     if (canInitiate)
     {
       canInitiate = false;
-      // float newCurrentEnemyHitstun;
-      // if (Input.GetButtonDown("Punch"))
-      //   Debug.Log("Punch");
-      // Need to find solutions for different hitstuns for all the different moves
       Combat enemyCombatComp = enemyCollider.transform.parent.gameObject.GetComponent<Combat>(); // Handle errors here if no combat component ound or if no parent and such
       enemyCombatComp.SetWasHit(true);
+      enemyCombatComp.SetCurrentHitstun(GetHitstunByAttackType(GetAttackType()));
       if (!enemyCombatComp.GetIsHitsunned())
       {
-        enemyCombatComp.SetCurrentHitstun(this.hitstunTimerTest); // Temporary hitstun for testing
         enemyCombatComp.SetIsHitstunned(true);
         // return; //before return - add a bit of stun. unless it is already part of the uppercut animation
       }
@@ -83,8 +79,8 @@ public class Combat : MonoBehaviour
     }
   }
   private void OnTriggerExit2D(Collider2D enemyCollider) {
-    if (!enemyCollider.transform.parent.gameObject)
-      return;
+    if (enemyCollider.gameObject.CompareTag("Consumable") && enemyCollider.gameObject.layer == LayerMask.NameToLayer("Consumables"))
+      return; //only temporary, need to find solution for general objects if even needed
     if (!enemyCollider.transform.parent.gameObject.CompareTag("Enemy"))
       return;
     Combat enemyCombatComp = enemyCollider.transform.parent.gameObject.GetComponent<Combat>();
@@ -103,4 +99,28 @@ public class Combat : MonoBehaviour
   public void SetIsHitstunned(bool newHitstunStatus) { this.isHitstunned = newHitstunStatus; }
   public bool GetIsHitsunned() { return this.isHitstunned; }
   public void SetWasHit(bool newWasHitStatus) { this.wasHit = newWasHitStatus; } 
+  private float GetHitstunByAttackType(AttackType attackType)
+  {
+    if (attackType == AttackType.light)
+      return this.hitstunTimerLight;
+    else if (attackType == AttackType.medium)
+      return this.hitstunTimerMedium;
+    else if (attackType == AttackType.heavy)
+      return this.hitstunTimerHeavy;
+    // else if (attackType == AttackType.air)
+    //   return this.hitstunTimerAir;
+    return 0f;
+  }
+  public AttackType GetAttackType() //maybe leave public so enemy can check patterns
+  {
+    if (Input.GetButton("Punch"))
+      return AttackType.light;
+    else if (Input.GetButton("Heavy Punch"))
+      return AttackType.medium;
+    else if (Input.GetButton("Uppercut"))
+      return AttackType.heavy;
+    // if (Input.GetButton("Punch"))
+    //   return AttackType.light; //Handle jumping and then punching
+    return AttackType.none; //use for error handling
+  }
 }

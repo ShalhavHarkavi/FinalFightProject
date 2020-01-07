@@ -678,9 +678,9 @@ MonoBehaviour:
   isHitstunned: 0
   attackInitDelay: 5
   hitstunTimerTest: 5
-  hitstunTimerLight: 300
-  hitstunTimerMedium: 300
-  hitstunTimerHeavy: 300
+  hitstunTimerLight: 1
+  hitstunTimerMedium: 3
+  hitstunTimerHeavy: 5
   hitstunTimerAir: 300
 --- !u!1 &2007740871
 GameObject:
