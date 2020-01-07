@@ -19,12 +19,12 @@ public class Enemy : MonoBehaviour
   GameObject playerRef;
   Animator animator;
   Combat combat;
+  Health health;
 
   bool detectedPlayer, inAttackRange;
   [SerializeField] float attackDistance = 2f; //Temp value, maybe change from distance to another collider with different tag
   [SerializeField] float giveUpChaseDistance = 10f; //Temp value
-  [SerializeField] int enemyHealthMax = 1000, healthRunAwayBar = 100;
-  int enemyHealth;
+  [SerializeField] int healthRunAwayBar = 100;
 
   void Start()
   {
@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
     currentState = EnemyState.initializing;
     animator = GetComponent<Animator>();
     combat = GetComponent<Combat>();
-    enemyHealth = enemyHealthMax;
+    health = GetComponent<Health>(); //handle errors across all files if no component was gotten (I guess that's how you spell it?)
   }
   void Update()
   {
@@ -64,9 +64,9 @@ public class Enemy : MonoBehaviour
           //
           break;
       }
-      if (enemyHealth <= healthRunAwayBar)
+      if (health.GetHealth() <= healthRunAwayBar)
       {
-        if (enemyHealth > 0)
+        if (health.GetHealth() > 0)
           currentState = EnemyState.runningAway;
         else
           currentState = EnemyState.dead;

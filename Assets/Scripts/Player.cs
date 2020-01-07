@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-  [SerializeField] int playerHealthMax = 1000;
+  // [SerializeField] int playerHealthMax = 1000;
   [SerializeField] int playerPointsMax = 50000;
   [SerializeField] int playerLives = 3; //handle game over state - reset level if lives == 0
   [SerializeField] float xAxisMoveSpeed = 5f;
@@ -21,7 +21,8 @@ public class Player : MonoBehaviour
 
   float xMin, xMax, yMin, yMax, punchTimer, jumpTimer;
   bool canMove, canJump, doCountPunchTimer, isJumping, isNearItem, isShielding;
-  int playerHealth, playerPoints, movingState, jumpingState, punchCounter;
+  // int playerHealth;
+  int playerPoints, movingState, jumpingState, punchCounter;
   GameObject shield = null;
   Collider2D consumableCollider = null;
   private float timeBtwAttack; //maybe remove? check usablity
@@ -32,11 +33,12 @@ public class Player : MonoBehaviour
   Rigidbody2D playerRigidbody;
   Camera gameCamera;
   Combat combat;
+  Health health;
 
   void Start()
   {
     playerPoints = 0;
-    playerHealth = playerHealthMax;
+    // playerHealth = playerHealthMax;
     canMove = true;
     canJump = true;
     movingState = 1;
@@ -51,6 +53,7 @@ public class Player : MonoBehaviour
     spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     playerRigidbody = GetComponent<Rigidbody2D>();
     combat = GetComponent<Combat>();
+    health = GetComponent<Health>();
     gameCamera = Camera.main;
     SetUpMoveBoundaries();
     shield = transform.Find("Cody Shield").gameObject; //If need to change to previous version: GameObject.Find("Cody Shield");
@@ -85,8 +88,9 @@ public class Player : MonoBehaviour
     //Find better way to write this, maybe change isJumping to trigger and add bool isJumping? then if input.getbuttondown("punch") && isJumping, trigger specific air kick?
     PointsToLives();
     LivesToHealth();
-    if (playerHealth > playerHealthMax)
-      playerHealth = playerHealthMax;
+    // if (playerHealth > playerHealthMax)
+    //   playerHealth = playerHealthMax;
+    
     // HandleGameOver(); //maybe do this in LivesToHealth()?
     // Debug.Log(); //Test message
   }
@@ -172,10 +176,10 @@ public class Player : MonoBehaviour
     Consumable.ItemType consumableType = consumableComponent.getConsumableType();
     if (consumableType == Consumable.ItemType.health)
     {
-      if (playerHealth == playerHealthMax)
+      if (health.HealthAtMax())
         playerPoints += consumableComponent.getConsumableValue();
       else
-        playerHealth += consumableComponent.getConsumableValue();
+        health.AddHealth(consumableComponent.getConsumableValue());
     }
     else if (consumableType == Consumable.ItemType.points)
       playerPoints += consumableComponent.getConsumableValue();
@@ -194,9 +198,9 @@ public class Player : MonoBehaviour
   }
   private void LivesToHealth()
   {
-    if (playerHealth <= 0)
+    if (health.GetHealth() <= 0)
     {
-      playerHealth = playerHealthMax;
+      health.ResetHealth();
       playerLives--;
       //maybe add effects?
     }

@@ -41,10 +41,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.040024877, y: -0.40025425}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -55,7 +55,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.0001, y: 0.0001}
+  m_Size: {x: 2.3608625, y: 5.3761044}
   m_EdgeRadius: 0
 --- !u!1 &246162398
 GameObject:
@@ -170,6 +170,63 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 4, y: 7}
+  m_EdgeRadius: 0
+--- !u!1 &1109605874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1109605875}
+  - component: {fileID: 1109605876}
+  m_Layer: 11
+  m_Name: ConsumableDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1109605875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109605874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1856418983171993979}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1109605876
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109605874}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.025, y: -2.55}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.2, y: 1.5}
   m_EdgeRadius: 0
 --- !u!1 &1475918490
 GameObject:
@@ -286,9 +343,9 @@ GameObject:
   - component: {fileID: 1856418983171993979}
   - component: {fileID: 1856418983171993976}
   - component: {fileID: 1856418983171993972}
-  - component: {fileID: 1856418983171993973}
   - component: {fileID: 1856418983171993978}
-  - component: {fileID: 1414898980}
+  - component: {fileID: 2006723326}
+  - component: {fileID: 2006723325}
   m_Layer: 0
   m_Name: Cody
   m_TagString: Player
@@ -314,6 +371,7 @@ Transform:
   - {fileID: 517969197}
   - {fileID: 1830728420935399815}
   - {fileID: 1856418983339190182}
+  - {fileID: 1109605875}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -348,7 +406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a9c5d767fefdd428137bd9e5d8fee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealthMax: 1000
   playerPointsMax: 50000
   playerLives: 3
   xAxisMoveSpeed: 10
@@ -361,32 +418,6 @@ MonoBehaviour:
   jumpSpeed: 0
   gravity: 5
   startTimeBtwAttack: 0.5
---- !u!61 &1856418983171993973
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1856418983171993977}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.040024877, y: -0.40025425}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.3608625, y: 5.3761044}
-  m_EdgeRadius: 0
 --- !u!50 &1856418983171993978
 Rigidbody2D:
   serializedVersion: 4
@@ -408,7 +439,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1414898980
+--- !u!114 &2006723326
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -421,8 +452,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHitstunned: 0
-  attackInitDelay: 60
-  hitstunTimerMax: 0
+  attackInitDelay: 5
+  hitstunTimerTest: 5
+  hitstunTimerLight: 1
+  hitstunTimerMedium: 3
+  hitstunTimerHeavy: 5
+  hitstunTimerAir: 300
+--- !u!114 &2006723325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856418983171993977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 065ba53e20fd05e44b6f519d1b143efb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthMax: 1000
+  health: 0
 --- !u!1 &1856418983987501858
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,11 +560,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1856418983171993979}
     m_Modifications:
-    - target: {fileID: 655475245294623191, guid: 1680e90d40db6dc44adf479039932323,
-        type: 3}
-      propertyPath: m_Name
-      value: Cody Shield
-      objectReference: {fileID: 0}
     - target: {fileID: 655475245294623188, guid: 1680e90d40db6dc44adf479039932323,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -570,6 +614,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 655475245294623191, guid: 1680e90d40db6dc44adf479039932323,
+        type: 3}
+      propertyPath: m_Name
+      value: Cody Shield
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1680e90d40db6dc44adf479039932323, type: 3}
