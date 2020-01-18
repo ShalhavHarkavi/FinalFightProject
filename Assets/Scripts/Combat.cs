@@ -8,13 +8,16 @@ public class Combat : MonoBehaviour
   [SerializeField] bool isHitstunned = false;
   [SerializeField] float attackInitDelay = 0.0001f;
   bool canInitiate = true;
-  [SerializeField] float hitstunTimerTest = 5f; //In seconds!!!!
   [SerializeField] float hitstunTimerLight = 300f;
   [SerializeField] float hitstunTimerMedium = 300f;
   [SerializeField] float hitstunTimerHeavy = 300f;
   [SerializeField] float hitstunTimerAir = 300f;
+  [SerializeField] int lightDamage = 50; //need to balance
+  [SerializeField] int mediumDamage = 100;
+  [SerializeField] int heavyDamage = 200;
+  // [SerializeField] int airDamage = 50;
   private float currentHitstunTimer;
-  bool canInvokeHitstunReset, wasHit;
+  bool canInvokeHitstunReset, wasHit, isPlayer;
 
   //add property descriptions for inspector
 
@@ -33,6 +36,8 @@ public class Combat : MonoBehaviour
     currentHitstunTimer = 0f;
     canInvokeHitstunReset = true;
     wasHit = false;
+    isPlayer = this.CompareTag("Player");
+
   }
   void Update()
   {
@@ -50,15 +55,16 @@ public class Combat : MonoBehaviour
     }
     // if (!isHitstunned)
     //   wasHit = false;
-    // if (this.gameObject.CompareTag("Enemy"))
-    //   Debug.Log(isHitstunned);
   }
   public void InitiatePunchSystem(Collider2D enemyCollider) //Fix so punches don't go off automatically.
   {
     if (canInitiate)
     {
+      if (isPlayer)
+        GetComponent<Style>().AddToAttackCounter(); //account for error if no component was found
       canInitiate = false;
-      Combat enemyCombatComp = enemyCollider.transform.parent.gameObject.GetComponent<Combat>(); // Handle errors here if no combat component ound or if no parent and such
+      Health enemyHealthComp = enemyCollider.transform.parent.gameObject.GetComponent<Health>(); //Handle errors
+      Combat enemyCombatComp = enemyCollider.transform.parent.gameObject.GetComponent<Combat>(); // Handle errors here if no combat component found or if no parent and such
       enemyCombatComp.SetWasHit(true);
       enemyCombatComp.SetCurrentHitstun(GetHitstunByAttackType(GetAttackType()));
       if (!enemyCombatComp.GetIsHitsunned())
@@ -68,9 +74,22 @@ public class Combat : MonoBehaviour
       }
       else if (enemyCombatComp.GetIsHitsunned() && (Input.GetButtonDown("Punch") || Input.GetButtonDown("Heavy Punch") || Input.GetButtonDown("Uppercut")))
       {
-        if (Input.GetButtonDown("Punch")) animator.SetTrigger("isPunching");
-        else if (Input.GetButtonDown("Heavy Punch")) animator.SetTrigger("isHardPunching");
-        else if (Input.GetButtonDown("Uppercut")) animator.SetTrigger("isUppercutting");
+        if (Input.GetButtonDown("Punch"))
+        {
+          enemyHealthComp.ReduceHealth(lightDamage);
+          animator.SetTrigger("isPunching");
+        }
+        else if (Input.GetButtonDown("Heavy Punch"))
+        {
+          enemyHealthComp.ReduceHealth(mediumDamage);
+          animator.SetTrigger("isHardPunching");
+        }
+        else if (Input.GetButtonDown("Uppercut"))
+        {
+          enemyHealthComp.ReduceHealth(heavyDamage);
+          animator.SetTrigger("isUppercutting");
+        }
+        //handle air attack here? maybe?
         // Invoke("ResetAttack", attackInitDelay); //Maybe just caninit = true? without invoke?
         // return;
       }
@@ -80,7 +99,7 @@ public class Combat : MonoBehaviour
   }
   private void OnTriggerExit2D(Collider2D enemyCollider) {
     if (enemyCollider.gameObject.CompareTag("Consumable") && enemyCollider.gameObject.layer == LayerMask.NameToLayer("Consumables"))
-      return; //only temporary, need to find solution for general objects if even needed
+      return; //only temporary, need to find solution for general objects, if even needed
     if (!enemyCollider.transform.parent.gameObject.CompareTag("Enemy"))
       return;
     Combat enemyCombatComp = enemyCollider.transform.parent.gameObject.GetComponent<Combat>();

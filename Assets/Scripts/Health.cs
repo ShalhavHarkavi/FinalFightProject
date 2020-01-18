@@ -17,6 +17,7 @@ public class Health : MonoBehaviour
   }
   public int GetHealth() { return this.health; }
   public void AddHealth(int addedHealth) { this.health += addedHealth; }
+  public void ReduceHealth(int reducedHealth) { this.health -= reducedHealth; }
   //Player-character methods:
   public bool HealthAtMax() { return health == healthMax; }
   public void ResetHealth() { this.health = healthMax; }
