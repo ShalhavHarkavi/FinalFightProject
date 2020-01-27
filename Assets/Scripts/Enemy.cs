@@ -25,9 +25,12 @@ public class Enemy : MonoBehaviour
   [SerializeField] float attackDistance = 2f; //Temp value, maybe change from distance to another collider with different tag
   [SerializeField] float giveUpChaseDistance = 10f; //Temp value
   [SerializeField] int healthRunAwayBar = 100;
+  Combat playerCombat;
+  Health playerHealth;
 
   void Start()
   {
+    playerRef = null;
     detectedPlayer = false;
     inAttackRange = false;
     currentState = EnemyState.initializing;
@@ -43,6 +46,11 @@ public class Enemy : MonoBehaviour
       {
         case EnemyState.initializing:
           playerRef = GameObject.FindGameObjectWithTag("Player");
+          if (playerRef != null)
+          {
+            playerCombat = playerRef.GetComponent<Combat>();
+            playerHealth = playerRef.GetComponent<Health>();
+          }
           currentState = EnemyState.searchingPlayer;
           break;
         case EnemyState.searchingPlayer:
@@ -116,6 +124,12 @@ void OnTriggerExit2D(Collider2D other)
   {
     if (!inAttackRange)
       currentState = EnemyState.chasingPlayer;
+    if (playerRef.GetComponent<Player>().GetIsShielding())
+    {} //do shit
+    else
+    {
+      
+    }
   }
   private void RunningAway()
   {
@@ -123,7 +137,7 @@ void OnTriggerExit2D(Collider2D other)
   }
   private void Blocking()
   {
-
+    
   }
   private void SearchingConsumable()
   {

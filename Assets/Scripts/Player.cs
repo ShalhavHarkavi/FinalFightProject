@@ -106,12 +106,12 @@ public class Player : MonoBehaviour
     if (canMove && !isShielding)
     {
       float deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * xAxisMoveSpeed;
-      float newXpos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
+      float newXpos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax); //is this needed?
       float deltaY = Input.GetAxis("Vertical") * Time.deltaTime * yAxisMoveSpeed; //maybe restrict y movemvent to !isJumping?
       float newYpos = 0;
       if (!isJumping)
         newYpos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
-      transform.position = new Vector2(newXpos, newYpos);
+      transform.position = new Vector2(transform.position.x + deltaX, newYpos);
       if (deltaX != 0 && !isJumping)
         transform.localScale = new Vector2(Mathf.Sign(deltaX), 1f);
       animator.SetBool("isWalking", (deltaX != 0 || deltaY != 0));
@@ -207,4 +207,5 @@ public class Player : MonoBehaviour
   }
   private void AttackAndWalkState(int state) { movingState = state; }
   private void JumpState(int state) { jumpingState = state; }
+  public bool GetIsShielding() { return this.isShielding; }
 }
