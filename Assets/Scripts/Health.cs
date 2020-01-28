@@ -16,6 +16,7 @@ public class Health : MonoBehaviour
       health = healthMax;
   }
   public int GetHealth() { return this.health; }
+  public float GetHealthPrecentage() { return this.health / this.healthMax; }
   public void AddHealth(int addedHealth) { this.health += addedHealth; }
   public void ReduceHealth(int reducedHealth) { this.health -= reducedHealth; }
   //Player-character methods:

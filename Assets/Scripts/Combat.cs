@@ -100,7 +100,7 @@ public class Combat : MonoBehaviour
   private void OnTriggerExit2D(Collider2D enemyCollider) {
     if (enemyCollider.gameObject.CompareTag("Consumable") && enemyCollider.gameObject.layer == LayerMask.NameToLayer("Consumables"))
       return; //only temporary, need to find solution for general objects, if even needed
-    if (!enemyCollider.transform.parent.gameObject.CompareTag("Enemy"))
+    if (!enemyCollider.transform.parent || !enemyCollider.transform.parent.gameObject.CompareTag("Enemy"))
       return;
     Combat enemyCombatComp = enemyCollider.transform.parent.gameObject.GetComponent<Combat>();
     enemyCombatComp.SetWasHit(false);
