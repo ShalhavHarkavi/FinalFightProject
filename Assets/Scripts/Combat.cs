@@ -17,7 +17,9 @@ public class Combat : MonoBehaviour
   [SerializeField] int heavyDamage = 200;
   // [SerializeField] int airDamage = 50;
   private float currentHitstunTimer;
-  bool canInvokeHitstunReset, wasHit, isPlayer;
+  bool canInvokeHitstunReset, wasHit, isPlayer, isInCombat;
+  Enemy currentEnemyRef;
+  AttackType currentPlayerAttackType, currentEnemyAttackType;
 
   //add property descriptions for inspector
 
@@ -37,7 +39,9 @@ public class Combat : MonoBehaviour
     canInvokeHitstunReset = true;
     wasHit = false;
     isPlayer = this.CompareTag("Player");
-
+    currentEnemyRef = null;
+    currentPlayerAttackType = AttackType.none;
+    currentEnemyAttackType = AttackType.none;
   }
   void Update()
   {
@@ -61,7 +65,11 @@ public class Combat : MonoBehaviour
     if (canInitiate)
     {
       if (isPlayer)
-        GetComponent<Style>().AddToAttackCounter(); //account for error if no component was found
+      {
+        //GetComponent<Style>().AddToAttackCounter(); //account for error if no component was found
+        isInCombat = true;
+        currentEnemyRef = enemyCollider.transform.parent.gameObject.GetComponent<Enemy>();
+      }
       canInitiate = false;
       Health enemyHealthComp = enemyCollider.transform.parent.gameObject.GetComponent<Health>(); //Handle errors
       Combat enemyCombatComp = enemyCollider.transform.parent.gameObject.GetComponent<Combat>(); // Handle errors here if no combat component found or if no parent and such
@@ -76,25 +84,62 @@ public class Combat : MonoBehaviour
       {
         if (Input.GetButtonDown("Punch"))
         {
+          currentPlayerAttackType = AttackType.light;
           enemyHealthComp.ReduceHealth(lightDamage);
           animator.SetTrigger("isPunching");
         }
         else if (Input.GetButtonDown("Heavy Punch"))
         {
+          currentPlayerAttackType = AttackType.medium;
           enemyHealthComp.ReduceHealth(mediumDamage);
           animator.SetTrigger("isHardPunching");
         }
         else if (Input.GetButtonDown("Uppercut"))
         {
+          currentPlayerAttackType = AttackType.heavy;
           enemyHealthComp.ReduceHealth(heavyDamage);
           animator.SetTrigger("isUppercutting");
         }
+        if (enemyHealthComp.GetHealth() <= 0)
+          isInCombat = false;
         //handle air attack here? maybe?
         // Invoke("ResetAttack", attackInitDelay); //Maybe just caninit = true? without invoke?
         // return;
       }
       // Invoke("ResetAttack", attackInitDelay); //Maybe just caninit = true? without invoke?
       canInitiate = true;
+    }
+  }
+  private void OnTriggerEnter2D(Collider2D otherCollider)
+  {
+    if (!otherCollider.transform.parent)
+      return;
+    if (otherCollider.transform.parent.CompareTag("Player") && otherCollider.gameObject.layer == LayerMask.NameToLayer("Hitbox"))
+    {
+      Health playerHealth = otherCollider.transform.parent.gameObject.GetComponent<Health>();
+      Combat playerCombat = otherCollider.transform.parent.gameObject.GetComponent<Combat>();
+      playerCombat.SetIsHitstunned(true);
+      switch(currentEnemyAttackType)
+      {
+        case AttackType.light:
+        {
+          playerCombat.SetCurrentHitstun(this.hitstunTimerLight);
+          playerHealth.ReduceHealth(this.lightDamage);
+          break;
+        }
+        case AttackType.medium:
+        {
+          playerCombat.SetCurrentHitstun(this.hitstunTimerMedium);
+          playerHealth.ReduceHealth(this.mediumDamage);
+          break;
+        }
+        case AttackType.heavy:
+        {
+          playerCombat.SetCurrentHitstun(this.hitstunTimerHeavy);
+          playerHealth.ReduceHealth(this.heavyDamage);
+          break;
+        }
+      }
     }
   }
   private void OnTriggerExit2D(Collider2D enemyCollider) {
@@ -118,6 +163,7 @@ public class Combat : MonoBehaviour
   public void SetIsHitstunned(bool newHitstunStatus) { this.isHitstunned = newHitstunStatus; }
   public bool GetIsHitsunned() { return this.isHitstunned; }
   public void SetWasHit(bool newWasHitStatus) { this.wasHit = newWasHitStatus; } 
+  public AttackType GetCurrentPlayerAttackType() { return currentPlayerAttackType; }
   private float GetHitstunByAttackType(AttackType attackType)
   {
     if (attackType == AttackType.light)
@@ -142,4 +188,7 @@ public class Combat : MonoBehaviour
     //   return AttackType.light; //Handle jumping and then punching
     return AttackType.none; //use for error handling
   }
+  public bool GetIsInCombat() { return isInCombat; }
+  public Enemy GetCurrentEnemyRef() { return currentEnemyRef; }
+  public void SetCurrentEnemyAttackType(AttackType newAttackType) { currentEnemyAttackType = newAttackType; }
 }

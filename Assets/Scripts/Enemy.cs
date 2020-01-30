@@ -21,7 +21,8 @@ public class Enemy : MonoBehaviour
   Combat combat;
   Health health;
 
-  bool detectedPlayer, inAttackRange;
+  bool detectedPlayer, inAttackRange, canMove;
+  int movingState;
   [SerializeField] float attackDistance = 2f; //Temp value, maybe change from distance to another collider with different tag
   [SerializeField] float giveUpChaseDistance = 10f; //Temp value
   [SerializeField] int healthRunAwayBar = 100;
@@ -30,6 +31,8 @@ public class Enemy : MonoBehaviour
 
   void Start()
   {
+    movingState = 1;
+    canMove = true;
     playerRef = null;
     detectedPlayer = false;
     inAttackRange = false;
@@ -80,6 +83,10 @@ public class Enemy : MonoBehaviour
           currentState = EnemyState.dead;
       }
       this.transform.localScale = new Vector2(((playerRef.transform.position.x > this.transform.position.x) ? 1 : -1), 1);
+      if (movingState == 1)
+        canMove = true;
+      if (movingState == 0)
+        canMove = false;
     }
   }
 
@@ -91,9 +98,9 @@ private void OnTriggerEnter2D(Collider2D other)
   {
     if (other.gameObject.CompareTag("detectCollider"))
       detectedPlayer = true;
-    if (other.gameObject.CompareTag("attackCollider"))
+    else if (other.gameObject.CompareTag("attackCollider"))
       inAttackRange = true;
-    if (other.gameObject.CompareTag("Shield"))
+    else if (other.gameObject.CompareTag("Shield"))
       Debug.Log("Enemy hit Player's shield!"); //Handle shielding here
   }
 }
@@ -111,13 +118,16 @@ void OnTriggerExit2D(Collider2D other)
   }
   private void ChasingPlayer()
   {
-    // animator.SetBool("isWalking", true);
-    float distanceFromPlayer = Vector2.Distance(playerRef.transform.position, this.transform.position);
-    transform.position = Vector2.MoveTowards(transform.position, playerRef.transform.position, 5f * Time.deltaTime); //maybe change 5f to something else
-    if (inAttackRange)
+    if (canMove) //&& !isShielding
     {
-      // animator.SetBool("isWalking", false);
-      currentState = EnemyState.attacking;
+      animator.SetBool("isWalking", true);
+      float distanceFromPlayer = Vector2.Distance(playerRef.transform.position, this.transform.position); //Is this needed?
+      transform.position = Vector2.MoveTowards(transform.position, playerRef.transform.position, 5f * Time.deltaTime); //maybe change 5f to something else
+      if (inAttackRange)
+      {
+        animator.SetBool("isWalking", false);
+        currentState = EnemyState.attacking;
+      }
     }
   }
   private void Attacking()
@@ -125,15 +135,41 @@ void OnTriggerExit2D(Collider2D other)
     if (!inAttackRange)
       currentState = EnemyState.chasingPlayer;
     if (playerRef.GetComponent<Player>().GetIsShielding())
-    {} //do shit
-    else
     {
+      return;
+    } //do shit
+    // else if (playerCombat.)
+    // {
       
+    // }
+    else if (playerCombat.GetCurrentPlayerAttackType() != Combat.AttackType.none)
+    {
+      switch(playerCombat.GetCurrentPlayerAttackType())
+      {
+        case Combat.AttackType.light:
+        {
+          combat.SetCurrentEnemyAttackType(Combat.AttackType.medium);
+          animator.SetTrigger("mediumAttack");
+          break;
+        }
+        case Combat.AttackType.medium:
+        {
+          combat.SetCurrentEnemyAttackType(Combat.AttackType.heavy);
+          animator.SetTrigger("heavyAttack");
+          break;
+        }
+        case Combat.AttackType.heavy:
+        {
+          currentState = EnemyState.blocking;
+          break;
+        }
+      }
     }
   }
   private void RunningAway()
   {
-    transform.position = Vector2.MoveTowards(transform.position, playerRef.transform.position, -5f * Time.deltaTime);
+    if (canMove) //&& !isShielding
+      transform.position = Vector2.MoveTowards(transform.position, playerRef.transform.position, -5f * Time.deltaTime);
   }
   private void Blocking()
   {
@@ -157,4 +193,5 @@ void OnTriggerExit2D(Collider2D other)
     //death animation
     Destroy(this);
   }
+  private void AttackAndWalkState(int state) { movingState = state; }
 }

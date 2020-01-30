@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
   [SerializeField] List<string> animationTriggerNames; //maybe remove?
   [SerializeField] float jumpSpeed = 10f; //maybe add range?
   [SerializeField] float gravity = 1f; //Need to tweak
+  [SerializeField] float heightSpawnMod = 2.73f;
   //Set up headers (and descriptions) for accessibility!
 
   float xMin, xMax, yMin, yMax, punchTimer, jumpTimer;
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
 
   void Start()
   {
+    DontDestroyOnLoad(this);
     playerPoints = 0;
     // playerHealth = playerHealthMax;
     canMove = true;
@@ -61,6 +63,10 @@ public class Player : MonoBehaviour
       Debug.LogError("NO SHIELD OBJECT CONNECTED TO PLAYER!");
     else
       shield.SetActive(false);
+  }
+  void OnEnable()
+  {
+    this.gameObject.transform.position = new Vector2(GameObject.Find("Player Spawn Point").transform.position.x, GameObject.Find("Player Spawn Point").transform.position.y + heightSpawnMod);
   }
   void Update()
   {

@@ -8,13 +8,18 @@ public class UIController : MonoBehaviour
 {
   Player playerScript;
   Health playerHealth, currentEnemyHealth;
-  [SerializeField] Slider playerHealthbar, currentEnemyHealthbar;
+  Combat playerCombat;
+  [SerializeField] Slider playerHealthbar;
+  [SerializeField] GameObject currentEnemyUI;
   [SerializeField] TextMeshProUGUI playerScore;
   void Start()
   {
+    currentEnemyUI.SetActive(false);
     playerScript = FindObjectOfType<Player>();
     //Handle error
     playerHealth = playerScript.GetComponent<Health>();
+    //Handle error
+    playerCombat = playerScript.GetComponent<Combat>();
     //Handle error
     //Handle healthbar, score etc. errors
 
@@ -25,5 +30,16 @@ public class UIController : MonoBehaviour
   {
     playerHealthbar.value = playerHealth.GetHealthPrecentage();
     playerScore.text = "SCORE: " + playerScript.GetPlayerScore().ToString("D5");
+    if (playerCombat.GetIsInCombat())
+    {
+      currentEnemyHealth = playerCombat.GetCurrentEnemyRef().GetComponent<Health>();
+      currentEnemyUI.SetActive(true);
+      currentEnemyUI.GetComponentInChildren<Slider>().value = currentEnemyHealth.GetHealthPrecentage();
+    }
+    else
+    {
+      currentEnemyHealth = null;
+      currentEnemyUI.SetActive(false);
+    }
   }
 }
